@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mehroz Perfume | Luxury Fragrances</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --gold: #c9a45c;
+    --black: #11100e;
+    --cream: #f7f3eb;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+}
+
+h1, h2, h3, .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.topbar {
+    background: var(--gold);
+    color: #17130b;
+    text-align: center;
+    padding: 9px;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.navbar {
+    background: #11100e;
+    padding: 16px 5%;
+}
+
+.brand-name {
+    color: var(--gold);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.navbar-nav .nav-link {
+    color: #f8f4ec;
+    font-size: 12px;
+    margin: 0 7px;
+    transition: .3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--gold);
+}
+
+.cart-button {
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 3px;
+    padding: 9px 15px;
+}
+
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    color: white;
+    background:
+    linear-gradient(90deg, rgba(10,9,8,.94), rgba(10,9,8,.55), rgba(10,9,8,.15)),
+    url('https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1800&q=85')
+    center/cover no-repeat;
+    padding: 100px 8%;
+}
+
+.hero-content {
+    max-width: 650px;
+    animation: fadeUp 1s ease;
+}
+
+.eyebrow {
+    color: var(--gold);
+    letter-spacing: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 7vw, 86px);
+    line-height: 1.05;
+    margin: 22px 0;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.hero p {
+    color: #e3ded4;
+    font-size: 14px;
+    line-height: 2;
+    max-width: 500px;
+}
+
+.gold-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: #17130b;
+    text-decoration: none;
+    padding: 14px 28px;
+    border: 1px solid var(--gold);
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.gold-btn:hover {
+    background: transparent;
+    color: var(--gold);
+}
+
+.outline-btn {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    padding: 13px 25px;
+    font-size: 12px;
+    transition: .3s;
+}
+
+.outline-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+.section {
+    padding: 85px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading .eyebrow {
+    letter-spacing: 4px;
+}
+
+.section-heading h2 {
+    font-size: 48px;
+    margin: 12px 0;
+}
+
+.section-heading p {
+    font-size: 13px;
+    color: #777;
+}
+
+.category-card {
+    height: 370px;
+    position: relative;
+    overflow: hidden;
+    background: #222;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s;
+}
+
+.category-card:hover img {
+    transform: scale(1.09);
+}
+
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 25%, rgba(0,0,0,.85));
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 28px;
+    color: white;
+}
+
+.category-overlay h3 {
+    font-size: 36px;
+}
+
+.category-overlay a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.product-card {
+    background: white;
+    border: 1px solid #eee8dd;
+    height: 100%;
+    transition: .3s;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 30px #00000012;
+}
+
+.product-image {
+    position: relative;
+    background: #eee9e0;
+    height: 300px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.06);
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--gold);
+    padding: 6px 10px;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.product-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 25px;
+}
+
+.product-info p {
+    color: #888;
+    font-size: 11px;
+}
+
+.price {
+    color: #9b7735;
+    font-weight: 600;
+    margin: 10px 0 15px;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 11px;
+    background: var(--black);
+    color: white;
+    border: 1px solid var(--black);
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.add-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+}
+
+.dark-section {
+    background: var(--black);
+    color: white;
+}
+
+.dark-section .section-heading p {
+    color: #bbb;
+}
+
+.feature-box {
+    padding: 25px 15px;
+    text-align: center;
+}
+
+.feature-box i {
+    font-size: 35px;
+    color: var(--gold);
+}
+
+.feature-box h3 {
+    font-size: 25px;
+    margin-top: 17px;
+}
+
+.feature-box p {
+    color: #bbb;
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.about-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.about-text h2 {
+    font-size: 49px;
+    margin: 15px 0;
+}
+
+.about-text p {
+    color: #6f6a62;
+    font-size: 13px;
+    line-height: 2.1;
+}
+
+.offer-banner {
+    background:
+    linear-gradient(90deg, rgba(12,11,9,.9), rgba(12,11,9,.4)),
+    url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1600&q=85')
+    center/cover;
+    text-align: center;
+    padding: 90px 20px;
+    color: white;
+}
+
+.offer-banner h2 {
+    font-size: 55px;
+    margin: 15px 0;
+}
+
+.review-card {
+    background: white;
+    padding: 30px;
+    height: 100%;
+    border-bottom: 2px solid var(--gold);
+}
+
+.stars {
+    color: var(--gold);
+    letter-spacing: 3px;
+}
+
+.review-card p {
+    font-size: 13px;
+    color: #777;
+    line-height: 2;
+    margin-top: 15px;
+}
+
+.contact-section {
+    background: #eee8dc;
+}
+
+.form-control {
+    padding: 13px;
+    border-radius: 0;
+    border: 1px solid #d7cbb8;
+    font-size: 13px;
+}
+
+.form-control:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 .15rem #c9a45c25;
+}
+
+footer {
+    background: #11100e;
+    color: white;
+    padding: 60px 7% 20px;
+}
+
+footer h3 {
+    color: var(--gold);
+    font-size: 30px;
+}
+
+footer p, footer a {
+    color: #bcb7ad;
+    font-size: 12px;
+    line-height: 2.2;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--gold);
+}
+
+.social-links a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #6b5a3c;
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.copyright {
+    border-top: 1px solid #333;
+    margin-top: 35px;
+    padding-top: 20px;
+    text-align: center;
+    color: #aaa;
+    font-size: 11px;
+}
+
+#cartMessage {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2000;
+    background: var(--black);
+    color: white;
+    border-left: 4px solid var(--gold);
+    padding: 15px 20px;
+    display: none;
+    max-width: 320px;
+    font-size: 13px;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width: 991px) {
+    .navbar-nav {
+        padding-top: 15px;
+    }
+    .navbar-nav .nav-link {
+        padding: 10px 0;
+    }
+    .hero {
+        min-height: 570px;
+        background-position: 60% center;
+    }
+}
+
+@media(max-width: 576px) {
+    .brand-name { font-size: 24px; }
+    .hero { padding: 75px 7%; min-height: 520px; }
+    .hero h1 { font-size: 49px; }
+    .section { padding: 60px 5%; }
+    .section-heading h2 { font-size: 39px; }
+    .category-card { height: 330px; }
+    .product-image { height: 260px; }
+    .offer-banner h2 { font-size: 40px; }
+    .about-image { height: 320px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    DISCOVER YOUR SIGNATURE SCENT | MEHROZ PERFUME
+</div>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand brand-name" href="#home">MEHROZ.</a>
+
+        <button class="navbar-toggler bg-light" type="button"
+        data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="#home">HOME</a></li>
+                <li class="nav-item"><a class="nav-link" href="#collections">COLLECTIONS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#products">BEST SELLERS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">ABOUT US</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
+                <li class="nav-item ms-lg-3">
+                    <button class="cart-button" onclick="showCart()">
+                        <i class="bi bi-bag"></i>
+                        CART (<span id="cartCount">0</span>)
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="eyebrow">THE ART OF LUXURY</div>
+        <h1>Discover Your<br><span>Signature Scent</span></h1>
+        <p>
+            More than a fragrance, it's a feeling. Discover elegant
+            perfumes crafted to express your personality and leave
+            a memorable impression wherever you go.
+        </p>
+        <div class="mt-4 d-flex gap-3 flex-wrap">
+            <a href="#products" class="gold-btn">SHOP COLLECTION</a>
+            <a href="#about" class="outline-btn">OUR STORY</a>
+        </div>
+    </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="section" id="collections">
+    <div class="section-heading">
+        <div class="eyebrow">EXPLORE OUR WORLD</div>
+        <h2>Our Collections</h2>
+        <p>Find the fragrance that feels like you.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=800&q=80" alt="Men's perfume collection">
+                <div class="category-overlay">
+                    <h3>For Him</h3>
+                    <p>Bold. Refined. Unforgettable.</p>
+                    <a href="#products" onclick="filterProducts('Men')">EXPLORE MEN'S PERFUMES →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80" alt="Women's perfume collection">
+                <div class="category-overlay">
+                    <h3>For Her</h3>
+                    <p>Elegant. Graceful. Beautiful.</p>
+                    <a href="#products" onclick="filterProducts('Women')">EXPLORE WOMEN'S PERFUMES →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=800&q=80" alt="Perfume gifts and collection">
+                <div class="category-overlay">
+                    <h3>For Kids</h3>
+                    <p>Fresh. Gentle. Delightful.</p>
+                    <a href="#products" onclick="filterProducts('Kids')">EXPLORE KIDS' PERFUMES →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="products" style="background:#fff">
+    <div class="section-heading">
+        <div class="eyebrow">YOUR NEXT FAVOURITE</div>
+        <h2>Our Best Sellers</h2>
+        <p>Explore the fragrances of Mehroz Perfume.</p>
+    </div>
+
+    <div class="d-flex justify-content-center flex-wrap gap-2 mb-5">
+        <button class="outline-btn" onclick="filterProducts('All')">ALL</button>
+        <button class="outline-btn" onclick="filterProducts('Men')">MEN</button>
+        <button class="outline-btn" onclick="filterProducts('Women')">WOMEN</button>
+        <button class="outline-btn" onclick="filterProducts('Kids')">KIDS</button>
+    </div>
+
+    <div class="row g-4" id="productGrid">
+
+        <div class="col-6 col-lg-3 product-item" data-category="Men">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">BEST SELLER</span>
+                    <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=600&q=80" alt="Mehroz Black Pulse perfume">
+                </div>
+                <div class="product-info">
+                    <h3>Black Pulse</h3>
+                    <p>Woody · Bold · Sophisticated</p>
+                    <div class="price">PKR 4,500</div>
+                    <button class="add-btn" onclick="addToCart('Mehroz Black Pulse',4500)">
+                        <i class="bi bi-bag-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-3 product-item" data-category="Women">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="product-badge">POPULAR</span>
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" alt="Mehroz Dream perfume">
+                </div>
+                <div class="product-info">
+                    <h3>Mehroz Dream</h3>
+                    <p>Floral · Soft · Elegant</p>
+                    <div class="price">PKR 3,800</div>
+                    <button class="add-btn" onclick="addToCart('Mehroz Dream',3800)">
+                        <i class="bi bi-bag-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-3 product-item" data-category="Men">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80" alt="Mehroz Midnight Musk perfume">
+                </div>
+                <div class="product-info">
+                    <h3>Midnight Musk</h3>
+                    <p>Warm · Deep · Mysterious</p>
+                    <div class="price">PKR 4,200</div>
+                    <button class="add-btn" onclick="addToCart('Mehroz Midnight Musk',4200)">
+                        <i class="bi bi-bag-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-3 product-item" data-category="Women">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=600&q=80" alt="Mehroz Golden Aura perfume">
+                </div>
+                <div class="product-info">
+                    <h3>Golden Aura</h3>
+                    <p>Fresh · Radiant · Charming</p>
+                    <div class="price">PKR 3,900</div>
+                    <button class="add-btn" onclick="addToCart('Mehroz Golden Aura',3900)">
+                        <i class="bi bi-bag-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-3 product-item" data-category="Men">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=600&q=80" alt="Mehroz Royal Oud perfume">
+                </div>
+                <div class="product-info">
+                    <h3>Royal Oud</h3>
+                    <p>Rich · Woody · Regal</p>
+                    <div class="price">PKR 4,600</div>
+                    <button class="add-btn" onclick="addToCart('Mehroz Royal Oud',4600)">
+                        <i class="bi bi-bag-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-3 product-item" data-category="Women">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYj4pT7csL01B70zMExd_BY475rrfrEVeqrbqer1l5SA&s=10">
+                </div>
+                <div class="product-info">
+                    <h3>Velvet Rose</h3>
+                    <p>Romantic · Floral · Soft</p>
+                    <div class="price">PKR 3,800</div>
+                    <button class="add-btn" onclick="addToCart('Mehroz Velvet Rose',3800)">
+                        <i class="bi bi-bag-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-3 product-item" data-category="Kids">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80" alt="Mehroz Little Star fragrance">
+                </div>
+                <div class="product-info">
+                    <h3>Little Star</h3>
+                    <p>Light · Fresh · Cheerful</p>
+                    <div class="price">PKR 2,000</div>
+                    <button class="add-btn" onclick="addToCart('Mehroz Little Star',2000)">
+                        <i class="bi bi-bag-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-3 product-item" data-category="Kids">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80" alt="Mehroz Little Bloom fragrance">
+                </div>
+                <div class="product-info">
+                    <h3>Little Bloom</h3>
+                    <p>Gentle · Sweet · Fresh</p>
+                    <div class="price">PKR 1,800</div>
+                    <button class="add-btn" onclick="addToCart('Mehroz Little Bloom',1800)">
+                        <i class="bi bi-bag-plus"></i> ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section dark-section">
+    <div class="section-heading">
+        <div class="eyebrow">THE MEHROZ EXPERIENCE</div>
+        <h2>Why Choose Mehroz?</h2>
+        <p>Every detail matters when it comes to your signature fragrance.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-6 col-lg-3">
+            <div class="feature-box">
+                <i class="bi bi-stars"></i>
+                <h3>Elegant Scents</h3>
+                <p>Fragrances selected to express your unique personality.</p>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="feature-box">
+                <i class="bi bi-gem"></i>
+                <h3>Premium Style</h3>
+                <p>Beautiful presentation with a luxury-inspired experience.</p>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="feature-box">
+                <i class="bi bi-gift"></i>
+                <h3>Perfect Gifts</h3>
+                <p>Thoughtful fragrance choices for special occasions.</p>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="feature-box">
+                <i class="bi bi-heart"></i>
+                <h3>Made With Care</h3>
+                <p>We aim to make every fragrance experience memorable.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+            <img class="about-image"
+            src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=1000&q=85"
+            alt="Luxury fragrance display">
+        </div>
+
+        <div class="col-lg-6 about-text">
+            <div class="eyebrow">OUR STORY</div>
+            <h2>More Than a Fragrance, It's a Feeling.</h2>
+            <p>
+                At Mehroz Perfume, we believe that a fragrance is more
+                than just a scent. It is an expression of personality,
+                a reflection of confidence and a memory that stays with you.
+            </p>
+            <p>
+                Our vision is to bring elegance and individuality to
+                every fragrance experience. Whether you prefer bold,
+                sophisticated notes or soft, delicate aromas, discover
+                a scent that feels uniquely yours.
+            </p>
+            <p><strong>MEHROZ PERFUME — Elegance in Every Drop.</strong></p>
+            <a href="#collections" class="gold-btn mt-3">DISCOVER OUR COLLECTION</a>
+        </div>
+    </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer-banner">
+    <div class="eyebrow">YOUR FRAGRANCE JOURNEY STARTS HERE</div>
+    <h2>Find Your Signature Fragrance</h2>
+    <p class="mb-4">Discover a scent that speaks without words.</p>
+    <a href="#products" class="gold-btn">EXPLORE COLLECTION</a>
+</section>
+
+<!-- REVIEWS -->
+<section class="section">
+    <div class="section-heading">
+        <div class="eyebrow">KIND WORDS</div>
+        <h2>Customer Love</h2>
+        <p>Example testimonials — replace these with real customer reviews.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Beautiful packaging and an elegant fragrance. The overall presentation feels premium."</p>
+                <h5 class="mt-3">Customer Review</h5>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"I love the stylish look of the collection. It makes a lovely gift for someone special."</p>
+                <h5 class="mt-3">Customer Review</h5>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"A beautiful fragrance concept with a sophisticated and modern feel."</p>
+                <h5 class="mt-3">Customer Review</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+    <div class="section-heading">
+        <div class="eyebrow">WE ARE HERE FOR YOU</div>
+        <h2>Get In Touch</h2>
+        <p>Have a question about our fragrances? Send us a message.</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <form id="contactForm">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="customerName"
+                        placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" id="customerEmail"
+                        placeholder="Your Email" required>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="customerSubject"
+                        placeholder="Subject" required>
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control" id="customerMessage"
+                        rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="gold-btn">SEND MESSAGE</button>
+                    </div>
+                </div>
+            </form>
+            <p class="text-center mt-3 small" id="formMessage"></p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <h3>MEHROZ PERFUME</h3>
+            <p>More Than a Fragrance, It's a Feeling.</p>
+            <p>Discover your identity through the art of fragrance.</p>
+            <div class="social-links">
+                <!-- Replace # with your real social media URLs -->
+                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+            <h5>Quick Links</h5>
+            <p><a href="#home">Home</a></p>
+            <p><a href="#collections">Collections</a></p>
+            <p><a href="#products">Best Sellers</a></p>
+            <p><a href="#about">About Us</a></p>
+        </div>
+
+        <div class="col-6 col-lg-3">
+            <h5>Customer Care</h5>
+            <p><a href="#contact">Contact Us</a></p>
+            <p><a href="#contact">Shipping Information</a></p>
+            <p><a href="#contact">Return Policy</a></p>
+            <p><a href="#contact">Frequently Asked Questions</a></p>
+        </div>
+
+        <div class="col-lg-3">
+            <h5>Our Promise</h5>
+            <p>Elegant fragrances. Beautiful moments. A signature that is yours.</p>
+        </div>
+    </div>
+
+    <div class="copyright">
+        © <span id="year"></span> Mehroz Perfume. All Rights Reserved.
+    </div>
+</footer>
+
+<div id="cartMessage" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+let cart = [];
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    updateCartCount();
+    showMessage(name + " added to your cart!");
+}
+
+function updateCartCount() {
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    document.getElementById("cartCount").textContent = count;
+}
+
+function showMessage(message) {
+    const box = document.getElementById("cartMessage");
+    box.textContent = message;
+    box.style.display = "block";
+
+    clearTimeout(window.cartMessageTimer);
+    window.cartMessageTimer = setTimeout(() => {
+        box.style.display = "none";
+    }, 2500);
+}
+
+function showCart() {
+    if (cart.length === 0) {
+        alert("Your cart is empty. Explore our collection first!");
+        return;
+    }
+
+    let summary = "YOUR MEHROZ PERFUME CART\n\n";
+    let total = 0;
+
+    cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+        summary += item.name + " x " + item.quantity +
+            " = PKR " + subtotal.toLocaleString("en-PK") + "\n";
+    });
+
+    summary += "\nTotal: PKR " + total.toLocaleString("en-PK");
+    summary += "\n\nThis is a demo cart. Online checkout is not connected yet.";
+
+    alert(summary);
+}
+
+function filterProducts(category) {
+    document.querySelectorAll(".product-item").forEach(item => {
+        const matches = category === "All" ||
+            item.dataset.category === category;
+
+        item.style.display = matches ? "" : "none";
+    });
+}
+
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    document.getElementById("formMessage").textContent =
+        "Thank you! The form demo worked, but a messaging service must be connected to send your message.";
+
+    this.reset();
+});
+</script>
+
+</body>
+</html>
